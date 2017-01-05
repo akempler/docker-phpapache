@@ -1,6 +1,7 @@
 # Drupal PHP Apache
 
 A PHP Apache image for Drupal development.
+Provides for php 7.1 and 5.6.
 
 
 ## Compose
