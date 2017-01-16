@@ -1,5 +1,4 @@
-FROM php:7.1.0-apache
-# FROM php:5.6-apache
+FROM php:5.6-apache
 
 MAINTAINER Adam Kempler <akempler@gmail.com>
 
@@ -18,10 +17,13 @@ RUN apt-get update \
     libjpeg-dev \
     libpq-dev \
     libxml2-dev \
+    libfreetype6-dev \
     libmcrypt-dev \
     vim \
-  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
-  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql zip soap xmlrpc \
+    php5-mysql \
+    mysql-client \
+  && docker-php-ext-configure gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
+  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql mysql mysqli zip soap xmlrpc \
   && pecl install -o -f xdebug
 
 
