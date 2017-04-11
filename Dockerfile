@@ -1,4 +1,4 @@
-FROM php:5.6-apache
+FROM php:7.1-apache
 
 MAINTAINER Adam Kempler <akempler@gmail.com>
 
@@ -31,10 +31,21 @@ RUN a2enmod rewrite \
   && a2enmod ssl \
   && a2enmod headers
 
+# NOTE: this, drush and xdbebug.sh are included in the CLI container.
+# Install Composer
+# RUN curl -sS https://getcomposer.org/installer | php \
+#  && mv composer.phar /usr/local/bin/composer
+
+# Install Drush
+# RUN composer global require drush/drush \
+#  && composer global update \
+#  && ln -s /root/.composer/vendor/bin/drush /usr/local/bin/drush
+
 ADD conf/apache/default.conf /etc/apache2/sites-available/000-default.conf
 ADD conf/php/00_opcache.ini /usr/local/etc/php/conf.d/
 ADD conf/php/00_xdebug.ini /usr/local/etc/php/conf.d/
 ADD conf/php/php.ini /usr/local/etc/php/conf.d/
+# ADD conf/scripts/xdebug.sh /var/www/xdebug.sh
 
 
 RUN a2ensite 000-default.conf
