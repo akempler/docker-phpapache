@@ -4,7 +4,7 @@ A PHP Apache image for Drupal development.
 Provides for php 7.1 and 5.6.
 
 
-## Compose
+## docker-compose.yml
 
 ```yml
   apache:
@@ -20,7 +20,6 @@ Provides for php 7.1 and 5.6.
       - "80:80"
     environment:
       DB_HOST: mysql:3306
-      DRUPAL_VERSION: 8 # Allowed: 7, 8
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
 ```
 
