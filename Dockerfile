@@ -31,7 +31,7 @@ RUN a2enmod rewrite \
   && a2enmod ssl \
   && a2enmod headers
 
-# NOTE: this, drush and xdbebug.sh are included in the CLI container.
+# NOTE: composer, drush and xdbebug.sh are included in the CLI container.
 # Install Composer
 # RUN curl -sS https://getcomposer.org/installer | php \
 #  && mv composer.phar /usr/local/bin/composer
