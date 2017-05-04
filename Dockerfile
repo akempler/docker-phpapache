@@ -1,4 +1,4 @@
-FROM php:7.1.0-apache
+FROM php:7.1-apache
 
 MAINTAINER Adam Kempler <akempler@gmail.com>
 
