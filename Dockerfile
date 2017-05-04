@@ -23,9 +23,8 @@ RUN apt-get update \
     php5-mysql \
     mysql-client \
   && docker-php-ext-configure gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
-  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql mysql mysqli zip soap xmlrpc \
+  && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql mysqli zip soap xmlrpc \
   && pecl install -o -f xdebug
-
 
 RUN a2enmod rewrite \
   && a2enmod ssl \
