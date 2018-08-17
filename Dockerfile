@@ -1,6 +1,6 @@
-FROM php:7.1-apache
+FROM php:7.2-apache
 
-MAINTAINER Adam Kempler <akempler@gmail.com>
+LABEL maintainer="akempler@gmail.com"
 
 ENTRYPOINT ["/root/entrypoint.sh"]
 
@@ -13,16 +13,13 @@ RUN usermod -u 1000 www-data \
 
 RUN apt-get update \
   && apt-get install -y \
-    libpng12-dev \
+    libpng-dev \
     libjpeg-dev \
     libpq-dev \
     libxml2-dev \
-    libfreetype6-dev \
     libmcrypt-dev \
     vim \
-    php5-mysql \
-    mysql-client \
-  && docker-php-ext-configure gd --with-freetype-dir=/usr --with-png-dir=/usr --with-jpeg-dir=/usr \
+  && docker-php-ext-configure gd --with-png-dir=/usr --with-jpeg-dir=/usr \
   && docker-php-ext-install gd mbstring opcache pdo pdo_mysql pdo_pgsql mysqli zip soap xmlrpc \
   && pecl install -o -f xdebug
 
